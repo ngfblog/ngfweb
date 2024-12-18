@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<script type="text/javascript">
+   var password = "yourPassword"; // Set your password here
+   var userPassword = prompt("Please enter the password to access this site:");
+   if (userPassword !== password) {
+      alert("Incorrect password");
+      window.location = "https://example.com"; // Redirect to another page if the password is incorrect
+   }
+</script>    
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
