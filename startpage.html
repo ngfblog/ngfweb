@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortcut Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #2C2C2C; /* רקע כהה */
+            color: #EAEAEA; /* צבע טקסט בהיר */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #FFFFFF; /* צבע טקסט בהיר לכותרת */
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* התאמה אוטומטית לפי גודל המסך */
+            gap: 15px;
+            max-width: 900px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background-color: #6C757D; /* צבע אפור כהה לכפתורים */
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+            text-align: center;
+            font-size: 16px; /* ברירת מחדל של גודל טקסט לכפתור */
+        }
+        button:hover {
+            background-color: #5A6368; /* צבע אפור כהה יותר בעת ריחוף */
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+        img {
+            width: 30px;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+        .size-controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .size-controls button {
+            background-color: #4A90E2;
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .size-controls button:hover {
+            background-color: #357ABD;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shortcut Buttons</h1>
+    <div class="button-grid">
+        <!-- Button for Google -->
+        <button onclick="window.open('https://www.google.com', '_blank')" class="shortcut-button">
+            <img src="https://www.google.com/favicon.ico" alt="Google Icon">
+            Google
+        </button>
+        <!-- Button for YouTube -->
+        <button onclick="window.open('https://www.youtube.com', '_blank')" class="shortcut-button">
+            <img src="https://www.youtube.com/s/desktop/ce51415a/img/favicon_32x32.png" alt="YouTube Icon">
+            YouTube
+        </button>
+        <!-- Button for Facebook -->
+        <button onclick="window.open('https://www.facebook.com', '_blank')" class="shortcut-button">
+            <img src="https://www.facebook.com/favicon.ico" alt="Facebook Icon">
+            Facebook
+        </button>
+        <!-- Button for Twitter -->
+        <button onclick="window.open('https://www.twitter.com', '_blank')" class="shortcut-button">
+            <img src="https://abs.twimg.com/favicons/twitter.ico" alt="Twitter Icon">
+            Twitter
+        </button>
+        <!-- Button for GitHub -->
+        <button onclick="window.open('https://www.github.com', '_blank')" class="shortcut-button">
+            <img src="https://github.githubassets.com/favicons/favicon.svg" alt="GitHub Icon">
+            GitHub
+        </button>
+        <!-- Button for LinkedIn -->
+        <button onclick="window.open('https://www.linkedin.com', '_blank')" class="shortcut-button">
+            <img src="https://www.linkedin.com/favicon.ico" alt="LinkedIn Icon">
+            LinkedIn
+        </button>
+        <!-- Button for Instagram -->
+        <button onclick="window.open('https://www.instagram.com', '_blank')" class="shortcut-button">
+            <img src="https://www.instagram.com/favicon.ico" alt="Instagram Icon">
+            Instagram
+        </button>
+        <!-- Button for Reddit -->
+        <button onclick="window.open('https://www.reddit.com', '_blank')" class="shortcut-button">
+            <img src="https://www.redditstatic.com/desktop2x/img/favicon/favicon-32x32.png" alt="Reddit Icon">
+            Reddit
+        </button>
+        <!-- Button for Amazon -->
+        <button onclick="window.open('https://www.amazon.com', '_blank')" class="shortcut-button">
+            <img src="https://www.amazon.com/favicon.ico" alt="Amazon Icon">
+            Amazon
+        </button>
+        <!-- Button for Netflix -->
+        <button onclick="window.open('https://www.netflix.com', '_blank')" class="shortcut-button">
+            <img src="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico" alt="Netflix Icon">
+            Netflix
+        </button>
+    </div>
+
+    <!-- Size Controls -->
+    <div class="size-controls">
+        <button onclick="changeButtonFontSize('increase')">+</button>
+        <button onclick="changeButtonFontSize('decrease')">-</button>
+        <button onclick="resetButtonFontSize()">Reset to Default</button>
+    </div>
+
+    <script>
+        // Set default font size for buttons
+        const defaultFontSize = 16;
+
+        function changeButtonFontSize(action) {
+            const buttons = document.querySelectorAll('.shortcut-button');
+            const currentSize = parseFloat(window.getComputedStyle(buttons[0]).fontSize);
+            let newSize;
+
+            if (action === 'increase') {
+                newSize = currentSize * 1.1; // Increase size by 10%
+            } else if (action === 'decrease') {
+                newSize = currentSize * 0.9; // Decrease size by 10%
+            }
+
+            // Apply the new font size to all buttons
+            buttons.forEach(button => {
+                button.style.fontSize = newSize + 'px';
+            });
+        }
+
+        // Reset button font size to default
+        function resetButtonFontSize() {
+            const buttons = document.querySelectorAll('.shortcut-button');
+            buttons.forEach(button => {
+                button.style.fontSize = defaultFontSize + 'px';
+            });
+        }
+    </script>
+</body>
+</html>
